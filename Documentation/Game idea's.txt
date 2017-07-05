@@ -1,0 +1,24 @@
+Tower defence
+
+Player:
+	Central tower
+		Range
+			Fires projectiles at targets in range
+				Different algorithms
+				Closest first
+				Most HP
+				Most attack power
+				...
+		Fire
+		Health
+		Armor
+		
+		
+		Option to build more smaller towers
+		Option to build research modules at towers/main tower
+		
+
+Enemies:
+	Target nearest tower from moment of spawn
+	Different types
+	Different strengths
