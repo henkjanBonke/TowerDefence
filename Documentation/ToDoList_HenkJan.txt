@@ -1,0 +1,11 @@
+UI Buttons
+	Upgrade attackSpeed;
+	Upgrade attackRange;
+	Upgrace maxHealth;
+	Upgrade health;
+
+Selected turret/building
+	Enable UI buttons for selected building
+
+Turret
+	Shooting
