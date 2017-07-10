@@ -1,5 +1,7 @@
 Tower defence
-
+----------------------------------------------------------------------
+			      Game idea / setup
+----------------------------------------------------------------------
 Player:
 	Central tower
 		Attack
@@ -38,6 +40,36 @@ Enemies:
 		Big/slow
 	Different strengths
 
+
+----------------------------------------------------------------------
+			      Programming
+----------------------------------------------------------------------
+
+
+Scripts
+	Tower
+		MainTower // position(0,0,0)
+		TowerAttack
+		TowerResearch
+		TowerConstructor
+
+	WorldBuilder
+	ResourceList
+	EnemySpawner
+	Enemy // OnCollision() DoSomething();
+		Type1
+		Type2
+	CameraScript
+
+// UI voor de tower(upgrades)
+	Main hud?
+	Per Tower?
+
+
+
+----------------------------------------------------------------------
+			      ProjectGoals
+----------------------------------------------------------------------
 Short term goal
 	Tower defence
 		Main tower
