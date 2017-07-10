@@ -2,23 +2,51 @@ Tower defence
 
 Player:
 	Central tower
-		Range
-			Fires projectiles at targets in range
-				Different algorithms
-				Closest first
-				Most HP
-				Most attack power
-				...
-		Fire
+		Attack
+			Speed
+			Range
+				Fires projectiles at targets in range
+					Different algorithms
+					Closest first
+					Most HP
+					Most attack power
+					...
 		Health
 		Armor
+		Posibility for extra upgrades?
+			Multi attack
+
+		Special ability's
+			Mortar
+			dmg over time area
+			Slow area		
 		
-		
-		Option to build more smaller towers
-		Option to build research modules at towers/main tower
-		
+Option to build more smaller towers
+	Extra towers:
+		Attack
+		Research
+		Constructor?
+		Resource gathering?
+		Wall tower?
+			Creates a wall between two defensive towers
 
 Enemies:
-	Target nearest tower from moment of spawn
+	Targeting method?
 	Different types
+		Small/fast
+		Med/normal
+		Big/slow
 	Different strengths
+
+Short term goal
+	Tower defence
+		Main tower
+		Sub towers
+		Enemy's
+
+Long term goal
+	Tower defence game, emperor battle for dune style
+		Main region
+		Provinces
+	Able to loose / gain new provinces to expand your empire
+		
