@@ -22,8 +22,11 @@ public class TowerMain : MonoBehaviour
         Vector3 dir = other.transform.position - gunPoint.transform.position;
         if (Physics.Raycast(gunPoint.transform.position, dir, out hit))
         {
-            DrawLine(gunPoint.transform.position, hit.point, Color.black);
-            //Destroy(other.gameObject);
+            if (other.name != "Ground")
+            {
+                DrawLine(gunPoint.transform.position, hit.point, Color.black);
+                Destroy(other.gameObject);
+            }
         }
     }
     
