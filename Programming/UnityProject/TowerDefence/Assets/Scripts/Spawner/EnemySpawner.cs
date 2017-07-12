@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour {
     private string timeTillNextWaveText;
     private bool spawning = false;
 
-    public GameObject basicEnemy;
+    public GameObject[] enemyArray;
     private GameObject currentSpawnObject;
 
     private float spawnCircleRadius = 30.0f;
@@ -41,6 +41,8 @@ public class EnemySpawner : MonoBehaviour {
             }
             else if(timeTillNextWave < 0)
             {
+                currentWave = new int[20];
+                ReadWave();
                 StartCoroutine(SpawnWave());
                 timeTillNextWaveText = "Wave spawning now";
                 textFieldTimeTillNextWave.text = timeTillNextWaveText;
@@ -55,7 +57,8 @@ public class EnemySpawner : MonoBehaviour {
         for (int i = 0; i<20; i++)
         {
             yield return new WaitForSeconds(timeTillNextSpawn);
-            currentSpawnObject = Instantiate(basicEnemy, Vector3.zero, Quaternion.identity);
+
+            currentSpawnObject = Instantiate(enemyArray[currentWave[i] - 1] , new Vector3(0, 0.5f, 0) , Quaternion.identity);
             float randomAngle = Random.value * 360;
             currentSpawnObject.transform.rotation = Quaternion.Euler(0, randomAngle, 0);
             currentSpawnObject.transform.Translate(Vector3.forward * spawnCircleRadius);
@@ -67,6 +70,7 @@ public class EnemySpawner : MonoBehaviour {
         waveText = "Next wave: " + waveCounter;
         textField.text = waveText;
         spawning = false;
+
     }
 
     private void ReadWave()
@@ -74,7 +78,7 @@ public class EnemySpawner : MonoBehaviour {
         string path = "Assets/Resources/SpawnWave/Wave" + waveCounter + ".txt";
         StreamReader reader = new StreamReader(path);
         string results = reader.ReadToEnd();
-        string[] waveString = results.Split(new char[] { "," }, System.StringSplitOptions.None);
+        string[] waveString = results.Split( ",".ToCharArray());
         for (int i = 0; i < 20; i++)
         {
             currentWave[i] = int.Parse(waveString[i]);

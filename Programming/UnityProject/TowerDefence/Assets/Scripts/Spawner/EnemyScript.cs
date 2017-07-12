@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
 
-    private float speed = 5.0f;
+    public float speed = 5.0f;
 
     private float health;
 
