@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class EnemySpawner : MonoBehaviour {
 
@@ -20,10 +21,13 @@ public class EnemySpawner : MonoBehaviour {
     private GameObject currentSpawnObject;
 
     private float spawnCircleRadius = 30.0f;
+    [SerializeField]
+    private int[] currentWave = new int[20];
 
 	void Start () {
         waveText = "Next wave: " + waveCounter;
         textField.text = waveText;
+        ReadWave();
     }
 
 	void Update () {
@@ -38,6 +42,8 @@ public class EnemySpawner : MonoBehaviour {
             else if(timeTillNextWave < 0)
             {
                 StartCoroutine(SpawnWave());
+                timeTillNextWaveText = "Wave spawning now";
+                textFieldTimeTillNextWave.text = timeTillNextWaveText;
                 spawning = true;
             }
         }
@@ -61,5 +67,20 @@ public class EnemySpawner : MonoBehaviour {
         waveText = "Next wave: " + waveCounter;
         textField.text = waveText;
         spawning = false;
+    }
+
+    private void ReadWave()
+    {
+        string path = "Assets/Resources/SpawnWave/Wave" + waveCounter + ".txt";
+        StreamReader reader = new StreamReader(path);
+        string results = reader.ReadToEnd();
+        string[] waveString = results.Split(new char[] { "," }, System.StringSplitOptions.None);
+        for (int i = 0; i < 20; i++)
+        {
+            currentWave[i] = int.Parse(waveString[i]);
+        }
+
+        Debug.Log(reader.ReadToEnd());
+        reader.Close();
     }
 }
