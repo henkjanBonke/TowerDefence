@@ -74,17 +74,27 @@ public class EnemySpawner : MonoBehaviour {
     private void ReadWave()
     {
         // small patch to create infinite waves
-        if (waveCounter == 4)
-            waveCounter = 1;
-
-        string path = "Assets/Resources/SpawnWave/Wave" + waveCounter + ".txt";
-        StreamReader reader = new StreamReader(path);
-        string results = reader.ReadToEnd();
-        string[] waveString = results.Split( ",".ToCharArray());
-        for (int i = 0; i < 20; i++)
+        if (waveCounter < 6)
         {
-            currentWave[i] = int.Parse(waveString[i]);
+            //waveCounter = 1;
+
+            string path = "Assets/Resources/SpawnWave/Wave" + waveCounter + ".txt";
+            StreamReader reader = new StreamReader(path);
+            string results = reader.ReadToEnd();
+            string[] waveString = results.Split(",".ToCharArray());
+            for (int i = 0; i < 20; i++)
+            {
+                currentWave[i] = int.Parse(waveString[i]);
+            }
+            reader.Close();
         }
-        reader.Close();
+        else
+        {
+            for(int i=0; i< 20; i++)
+            {
+                currentWave[i] = Mathf.RoundToInt(Random.value * 2) + 1;
+            }
+        }
+        
     }
 }
