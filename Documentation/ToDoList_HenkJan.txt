@@ -8,4 +8,6 @@ Selected turret/building
 	Enable UI buttons for selected building
 
 Turret
-	Shooting
+	//Shooting
+	//Shooting speed
+	//Target List
