@@ -50,19 +50,15 @@ public class TowerMain : TowerBase
             case 1:
                 target = enemysInRange[0];
                 return target;
-                break;
             case 2:
                 target = enemysInRange[0];
                 return target;
-                break;
             case 3:
                 target = enemysInRange[0];
                 return target;
-                break;
             default:
                 target = enemysInRange[0];
                 return target;
-                break;
         }
     }
 

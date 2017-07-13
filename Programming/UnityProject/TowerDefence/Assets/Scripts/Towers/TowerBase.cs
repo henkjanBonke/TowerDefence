@@ -5,7 +5,7 @@ using UnityEngine;
 public class TowerBase : MonoBehaviour {
 
     [SerializeField]
-    protected float attackSpeed = 0.1f, attackRange = 10, maxHealth, health = 100, armor = 0;
+    protected float attackSpeed = 1, attackRange = 10, maxHealth, health = 100, armor = 0;
 
 	void Start ()
     {
@@ -21,19 +21,19 @@ public class TowerBase : MonoBehaviour {
 		
 	}
 
-    protected void UpgradeAttackSpeed()
+    public void UpgradeAttackSpeed()
     {
         attackSpeed *= 1.01f;
     }
 
     // Increase attack range by X% and update the collider radius
-    protected void UpgradeAttackRange()
+    public void UpgradeAttackRange()
     {
         attackRange *= 1.01f;
         GetComponent<SphereCollider>().radius = attackRange;
     }
 
-    protected void UpgradeMaxHealth()
+    public void UpgradeMaxHealth()
     {
         maxHealth += 10;
     }

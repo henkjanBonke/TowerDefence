@@ -27,7 +27,6 @@ public class EnemySpawner : MonoBehaviour {
 	void Start () {
         waveText = "Next wave: " + waveCounter;
         textField.text = waveText;
-        ReadWave();
     }
 
 	void Update () {
@@ -62,7 +61,6 @@ public class EnemySpawner : MonoBehaviour {
             float randomAngle = Random.value * 360;
             currentSpawnObject.transform.rotation = Quaternion.Euler(0, randomAngle, 0);
             currentSpawnObject.transform.Translate(Vector3.forward * spawnCircleRadius);
-            Debug.Log(counter);
             counter++;
         }
         timeTillNextWave = 3.0f;
@@ -75,6 +73,10 @@ public class EnemySpawner : MonoBehaviour {
 
     private void ReadWave()
     {
+        // small patch to create infinite waves
+        if (waveCounter == 4)
+            waveCounter = 1;
+
         string path = "Assets/Resources/SpawnWave/Wave" + waveCounter + ".txt";
         StreamReader reader = new StreamReader(path);
         string results = reader.ReadToEnd();
@@ -83,8 +85,6 @@ public class EnemySpawner : MonoBehaviour {
         {
             currentWave[i] = int.Parse(waveString[i]);
         }
-
-        Debug.Log(reader.ReadToEnd());
         reader.Close();
     }
 }

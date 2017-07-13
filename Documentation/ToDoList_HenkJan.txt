@@ -11,3 +11,9 @@ Turret
 	//Shooting
 	//Shooting speed
 	//Target List
+
+Resource (point/credit gain on kill)
+
+Chris
+	Button, spawn next wave
+	Kunnen we in plaasts van een script niet een array met random getallen vullen?
