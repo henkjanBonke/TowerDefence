@@ -5,7 +5,7 @@ using UnityEngine;
 public class TowerBase : MonoBehaviour {
 
     [SerializeField]
-    protected float attackSpeed = 1, attackRange = 10, maxHealth, health = 100, armor = 0;
+    protected float attackSpeed = 1, attackRange = 10, maxHealth, health = 100, armor = 0, attackPower = 1;
 
 	void Start ()
     {

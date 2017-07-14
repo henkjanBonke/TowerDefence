@@ -38,7 +38,8 @@ public class TowerMain : TowerBase
         {
             DrawLine(gunPoint.transform.position, hit.point, Color.black);
             enemysInRange.Remove(target);
-            Destroy(target.gameObject);
+            target.GetComponent<EnemyScript>().takeDamage(attackPower);
+            //Destroy(target.gameObject);
         }
     }
 
