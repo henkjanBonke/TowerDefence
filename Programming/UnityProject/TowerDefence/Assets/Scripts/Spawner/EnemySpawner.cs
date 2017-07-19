@@ -9,9 +9,6 @@ public class EnemySpawner : MonoBehaviour {
     private float timeTillNextWave = 0.2f;
     private float timeTillNextSpawn = 0.5f;
 
-    public Text textField;
-    public Text textFieldTimeTillNextWave;
-
     private int waveCounter = 1;
     private string waveText;
     private string timeTillNextWaveText;
@@ -24,9 +21,12 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField]
     private int[] currentWave = new int[20];
 
-	void Start () {
-        waveText = "Next wave: " + waveCounter;
-        textField.text = waveText;
+    private UIBehaviour uIBehaviour;
+
+	void Start ()
+    {
+        uIBehaviour = GameObject.Find("MainGameLogic").GetComponent<UIBehaviour>();
+        uIBehaviour.UpdateWaveText("Next wave: " + waveCounter);
     }
 
 	void Update () {
@@ -35,16 +35,16 @@ public class EnemySpawner : MonoBehaviour {
             if(timeTillNextWave >= 0)
             {
                 timeTillNextWave -= Time.deltaTime;
-                timeTillNextWaveText = "Next wave in: " + Mathf.Round(timeTillNextWave);
-                textFieldTimeTillNextWave.text = timeTillNextWaveText;
+                uIBehaviour.UpdateTTNW("Next wave in: " + Mathf.Round(timeTillNextWave));
+                
             }
             else if(timeTillNextWave < 0)
             {
                 currentWave = new int[20];
                 ReadWave();
                 StartCoroutine(SpawnWave());
-                timeTillNextWaveText = "Wave spawning now";
-                textFieldTimeTillNextWave.text = timeTillNextWaveText;
+                uIBehaviour.UpdateTTNW("Wave spawning now");
+                
                 spawning = true;
             }
         }
@@ -65,8 +65,7 @@ public class EnemySpawner : MonoBehaviour {
         }
         timeTillNextWave = 3.0f;
         waveCounter++;
-        waveText = "Next wave: " + waveCounter;
-        textField.text = waveText;
+        uIBehaviour.UpdateWaveText("Next wave: " + waveCounter);
         spawning = false;
 
     }

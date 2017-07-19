@@ -5,23 +5,28 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour {
 
     [SerializeField]
-    private int moneyResource = 0;
+    private int credits = 0;
 
-	void Start () {
-		
-	}
+    private UIBehaviour uIBehaviour;
+
+	void Start ()
+    {
+		uIBehaviour = GameObject.Find("MainGameLogic").GetComponent<UIBehaviour>();
+    }
 	
 	void Update () {
 		
 	}
 
-    public void addMoney(int amount)
+    public void addCredits(int amount)
     {
-        moneyResource += amount;
+        credits += amount;
+        uIBehaviour.UpdateCredits(credits);
     }
 
-    public void useMoney(int amount)
+    public void useCredits(int amount)
     {
-        moneyResource -= amount;
+        credits -= amount;
+        uIBehaviour.UpdateCredits(credits);
     }
 }

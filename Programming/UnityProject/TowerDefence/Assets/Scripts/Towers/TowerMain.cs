@@ -7,10 +7,11 @@ public class TowerMain : TowerBase
     public GameObject gunPoint;
     private List<GameObject> enemysInRange = new List<GameObject>();
     private float attackTimer = 0;
+    MeshRenderer mr;
 
     void Start ()
     {
-        //attackRange = 10;        
+        mr = transform.GetComponentInChildren<MeshRenderer>();      
     }
 
 	void Update ()
@@ -23,6 +24,15 @@ public class TowerMain : TowerBase
                 Fire();
                 attackTimer = 0;
             }  
+        }
+
+        if (isSelected == true)
+        {
+            
+            mr.material.color = Color.blue;
+        } else
+        {
+            mr.material.color = Color.white;
         }
         //UpgradeAttackRange();
     }

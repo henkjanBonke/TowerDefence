@@ -30,7 +30,7 @@ public class CameraBehaviour : MonoBehaviour {
 
     void Rotation()
     {
-        if (Input.GetKey(KeyCode.Mouse2))
+        if (Input.GetKey(KeyCode.Mouse1)) // RightMouseButton
         {
             lookRotationX += Input.GetAxis("Mouse X") * rotationSpeed;
             lookRotationY -= Input.GetAxis("Mouse Y") * rotationSpeed;
