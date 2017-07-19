@@ -1,7 +1,10 @@
-Selected turret/building
-	Enable UI buttons for selected building
+Building placement
 
-Turret
-	//Shooting
-	//Shooting speed
-	//Target List
+Improve target system, something is going wrong?!?
+? If a target is destroyed, tell all towers that this object is gone?
+
+bullets not appearing correctly
+Reduce Tower Hp when hit
+
+Add Research Tower
+Add Construction Tower

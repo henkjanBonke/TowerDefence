@@ -28,28 +28,31 @@ public class TowerMain : TowerBase
 
         if (isSelected == true)
         {
-            
             mr.material.color = Color.blue;
         } else
         {
             mr.material.color = Color.white;
         }
-        //UpgradeAttackRange();
     }
 
     void Fire()
     {
         // create different algorithms for targeting method
         GameObject target = TargetAlgorithm(0);
-
-        RaycastHit hit;
-        Vector3 dir = target.transform.position - gunPoint.transform.position;
-        if (Physics.Raycast(gunPoint.transform.position, dir, out hit))
+  
+        if (target != null)
         {
-            DrawLine(gunPoint.transform.position, hit.point, Color.black);
+            RaycastHit hit;
+            Vector3 dir = target.transform.position - gunPoint.transform.position;
+            if (Physics.Raycast(gunPoint.transform.position, dir, out hit))
+            {
+                DrawLine(gunPoint.transform.position, hit.point, Color.black);
+                enemysInRange.Remove(target);
+                target.GetComponent<EnemyScript>().takeDamage(attackPower);
+            }
+        }else
+        {
             enemysInRange.Remove(target);
-            target.GetComponent<EnemyScript>().takeDamage(attackPower);
-            //Destroy(target.gameObject);
         }
     }
 
@@ -72,8 +75,6 @@ public class TowerMain : TowerBase
                 return target;
         }
     }
-
-
 
     void OnTriggerEnter(Collider other)
     {

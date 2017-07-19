@@ -49,11 +49,12 @@ public class TowerBase : MonoBehaviour {
         armor++;
     }
 
-    public void IsSelected()
+    public void Select()
     {
-        if (isSelected != true)
-            isSelected = true;
-        else
-            isSelected = false;
+        isSelected = true;
+    }
+    public void DeSelect()
+    {
+        isSelected = false;
     }
 }
