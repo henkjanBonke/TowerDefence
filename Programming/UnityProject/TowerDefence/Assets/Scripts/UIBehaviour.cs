@@ -38,30 +38,30 @@ public class UIBehaviour : MonoBehaviour {
     {
         textFieldCredits.text = amount.ToString();
     }
-    // Start UI Buttons
+    // UI Buttons
     public void AttackSpeedButton()
     {
-        if(targetBuilding != null)
+        if(!targetBuilding)
             targetBuilding.UpgradeAttackSpeed();
     }
     public void AttackRangeButton()
     {
-        if (targetBuilding != null)
+        if (!targetBuilding)
             targetBuilding.UpgradeAttackRange();
     }
     public void AttackDamageButton()
     {
-        if (targetBuilding != null)
+        if (!targetBuilding)
             targetBuilding.UpgradeAttackPower();
     }
     public void DefenceHealthButton()
     {
-        if (targetBuilding != null)
+        if (!targetBuilding)
             targetBuilding.UpgradeMaxHealth();
     }
     public void DefenceArmorButton()
     {
-        if (targetBuilding != null)
+        if (!targetBuilding)
             targetBuilding.UpgradeArmor();
     }
     // End UI Buttons

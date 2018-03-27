@@ -17,28 +17,38 @@ public class TowerMain : TowerBase
 	void Update ()
     {
         attackTimer += Time.deltaTime;
+        // check if enemysInRange is still up to date
+        for(int i = 0; i < enemysInRange.Count; i++)
+        {
+            if (enemysInRange[i] == null || OutOfRange(enemysInRange[i]))
+            {
+                enemysInRange.Remove(enemysInRange[i]);
+            }
+        }
+
+        // check if the tower is allowed to shoot...
         if(attackTimer > attackSpeed)
         {
+            // ... check if there is someone in range...
             if(enemysInRange.Count != 0)
             {
+                // ... shoot and reset the attack timer.
                 Fire();
                 attackTimer = 0;
             }  
         }
 
+        // change material on selection
         if (isSelected == true)
-        {
             mr.material.color = Color.blue;
-        } else
-        {
+        else
             mr.material.color = Color.white;
-        }
     }
 
     void Fire()
     {
         // create different algorithms for targeting method
-        GameObject target = TargetAlgorithm(0);
+        GameObject target = TargetAlgorithm(2);
   
         if (target != null)
         {
@@ -46,8 +56,8 @@ public class TowerMain : TowerBase
             Vector3 dir = target.transform.position - gunPoint.transform.position;
             if (Physics.Raycast(gunPoint.transform.position, dir, out hit))
             {
+                // ToDo switch DwarLine to fire particle
                 DrawLine(gunPoint.transform.position, hit.point, Color.black);
-                enemysInRange.Remove(target);
                 target.GetComponent<EnemyScript>().takeDamage(attackPower);
             }
         }else
@@ -62,31 +72,36 @@ public class TowerMain : TowerBase
         switch (value)
         {
             case 1:
+                // target with most hp
                 target = enemysInRange[0];
                 return target;
             case 2:
-                target = enemysInRange[0];
-                return target;
+                // closest target
+                return ClosestTarget(enemysInRange, this.gameObject);
             case 3:
-                target = enemysInRange[0];
+                // last target
+                target = enemysInRange[enemysInRange.Count];
                 return target;
             default:
+                // first come first serve
                 target = enemysInRange[0];
                 return target;
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Enemy")
-        {
-            enemysInRange.Add(other.gameObject);
-        }
-    }
-
+    
     void OnTriggerStay(Collider other)
     {
-        
+        // if an object with the tag "Enemy" is in the trigger...
+        if (other.tag == "Enemy")
+        {
+            // ... and it is NOT in the enemysInRange list ...
+            if (!enemysInRange.Contains(other.gameObject))
+            {
+                // ...add it to the enemysInRange list.
+                enemysInRange.Add(other.gameObject);
+            }
+        }
     }
     
     // Draw a line from start to end point with a set duration, remove the line when the duration is met.

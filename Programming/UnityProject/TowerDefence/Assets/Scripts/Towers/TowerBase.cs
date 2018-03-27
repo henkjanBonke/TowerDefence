@@ -49,6 +49,17 @@ public class TowerBase : MonoBehaviour {
         armor++;
     }
 
+    public bool OutOfRange(GameObject enemy)
+    {
+        // if distance is greater then firerange
+        float dis = Vector3.Distance(this.transform.position, enemy.transform.position);
+        if (dis > attackRange)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void Select()
     {
         isSelected = true;
@@ -57,4 +68,25 @@ public class TowerBase : MonoBehaviour {
     {
         isSelected = false;
     }
+
+    // attack algorithms
+    public GameObject ClosestTarget(List<GameObject> enemysInRange, GameObject tower)
+    {
+        // loop through list of enemy's in range
+        GameObject closestTarget = enemysInRange[enemysInRange.Count-1];
+        float lowestDist = attackRange;
+            for (int i = 0; i < enemysInRange.Count; i++)
+            {
+            // calculate distance between tower and enemy's
+            float dis = Vector3.Distance(tower.transform.position, enemysInRange[i].transform.position);
+                if (dis < lowestDist)
+                {
+                // store distance, overwrite when lower
+                    lowestDist = dis;
+                    closestTarget = enemysInRange[i];
+                }
+            }
+        // return closest enemy
+        return closestTarget;
+        }
 }

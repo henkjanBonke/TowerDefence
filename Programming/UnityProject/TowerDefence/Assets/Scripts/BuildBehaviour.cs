@@ -58,7 +58,6 @@ public class BuildBehaviour : MonoBehaviour
                 if (hit.collider.tag == "ConstructionGround")
                 {
                     tempBuilding.transform.position = hit.point;
-                    Debug.Log("**");
                     // TODO check credits
                     if(Input.GetKeyUp(KeyCode.Mouse0))
                     {
