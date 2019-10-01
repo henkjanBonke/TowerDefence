@@ -41,27 +41,27 @@ public class UIBehaviour : MonoBehaviour {
     // UI Buttons
     public void AttackSpeedButton()
     {
-        if(!targetBuilding)
+        if(targetBuilding)
             targetBuilding.UpgradeAttackSpeed();
     }
     public void AttackRangeButton()
     {
-        if (!targetBuilding)
+        if (targetBuilding)
             targetBuilding.UpgradeAttackRange();
     }
     public void AttackDamageButton()
     {
-        if (!targetBuilding)
+        if (targetBuilding)
             targetBuilding.UpgradeAttackPower();
     }
     public void DefenceHealthButton()
     {
-        if (!targetBuilding)
+        if (targetBuilding)
             targetBuilding.UpgradeMaxHealth();
     }
     public void DefenceArmorButton()
     {
-        if (!targetBuilding)
+        if (targetBuilding)
             targetBuilding.UpgradeArmor();
     }
     // End UI Buttons

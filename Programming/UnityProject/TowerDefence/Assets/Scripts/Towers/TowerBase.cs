@@ -24,7 +24,8 @@ public class TowerBase : MonoBehaviour {
 
     public void UpgradeAttackSpeed()
     {
-        attackSpeed *= 1.01f;
+        attackSpeed *= 0.99f;
+        Debug.Log(attackSpeed);
     }
 
     // Increase attack range by X% and update the collider radius

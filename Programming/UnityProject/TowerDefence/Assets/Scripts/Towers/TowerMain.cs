@@ -11,6 +11,7 @@ public class TowerMain : TowerBase
 
     void Start ()
     {
+        // set the MeshRenderer
         mr = transform.GetComponentInChildren<MeshRenderer>();      
     }
 
@@ -45,7 +46,8 @@ public class TowerMain : TowerBase
             mr.material.color = Color.white;
     }
 
-    void Fire()
+    
+    void Fire() // TODO, add attack method. e.g. laser, missile, mortar..., TODO, switch fire to attackScript
     {
         // create different algorithms for targeting method
         GameObject target = TargetAlgorithm(2);
@@ -111,10 +113,10 @@ public class TowerMain : TowerBase
         myLine.transform.position = start;
         myLine.AddComponent<LineRenderer>();
         LineRenderer lr = myLine.GetComponent<LineRenderer>();
-        lr.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
-        //lr.StartColor(Color.black);
-        lr.SetColors(color, color);
-        lr.SetWidth(0.1f, 0.1f);
+        //lr.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply")); // shader not found
+        lr.material.color = color;
+        //lr.startColor = color;
+        lr.startWidth = 0.1f;
         lr.SetPosition(0, start);
         lr.SetPosition(1, end);
         GameObject.Destroy(myLine, duration);
