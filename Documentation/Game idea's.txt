@@ -21,15 +21,18 @@ Player:
 		Special ability's
 			Mortar
 			dmg over time area
-			Slow area		
+			Slow area
+		Build area
+			Fixed to grid
+				Upgrading build area increases buildable area originating from tower		
 		
 Option to build more smaller towers
 	Extra towers:
 		Attack
 		Research
-		Constructor?
+		Constructor
 		Resource gathering?
-		Wall tower?
+		Wall tower
 			Creates a wall between two defensive towers
 
 Enemies:
@@ -80,5 +83,5 @@ Long term goal
 	Tower defence game, emperor battle for dune style
 		Main region
 		Provinces
-	Able to loose / gain new provinces to expand your empire
+	Able to lose / gain new provinces to expand your empire
 		
